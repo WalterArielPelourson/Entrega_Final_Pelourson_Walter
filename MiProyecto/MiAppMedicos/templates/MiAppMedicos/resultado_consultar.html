@@ -1,0 +1,16 @@
+{% extends "MiAppMedicos/TempBaseCargaDatos.html" %}
+
+{% load static %}
+
+{% block title %} Formulario para consultar turnos {% endblock title %}
+
+{% block main %}
+       
+    <h2>Turnos de consultados</h2>
+<ul>
+    {% for turno in turnos %}
+        <li>MEDICO:{{ turno.medico }} - PACIENTE: {{ turno.paciente }} - EL DIA: {{ turno.fecha }} A LAS: {{ turno.hora }} HS</li>
+    {% endfor %}
+</ul>
+
+{% endblock main %}
