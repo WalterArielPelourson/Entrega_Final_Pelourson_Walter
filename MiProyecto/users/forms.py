@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User 
-from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -13,3 +13,19 @@ class UserRegisterForm(UserCreationForm):
         
         help_text = {k: "" for k in fields}
         
+        
+        
+class UserEditForm (UserChangeForm):
+    password = None
+    email = forms.EmailField(label="Ingrese su email:")
+    last_name = forms.CharField(label='Apellido:')
+    first_name = forms.CharField(label='Nombre:')
+    
+    class Meta:
+        model = User
+        fields = ['email', 'last_name', 'first_name']
+        help_texts = {k:"" for k in fields}
+        
+        
+        
+

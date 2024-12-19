@@ -1,8 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from users.forms import UserRegisterForm
+from django.contrib.auth.decorators import login_required
+from .forms import UserEditForm
 
+
+
+
+
+#Logueo
 def login_request(request):
     
     msg_login = " "
@@ -22,6 +29,7 @@ def login_request(request):
         
         msg_login = "Usuario o contraseña invalido"
     form = AuthenticationForm()
+    
     return render(request, "users/login.html", {"form": form, "msg_login": msg_login})    
 
 
@@ -40,3 +48,28 @@ def register (request):
         
     form = UserRegisterForm()
     return render(request, "users/registro.html", {"form": form, "msg_register": msg_register})        
+
+
+      
+       
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def editar_perfil(request):
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return render(request, "MiAppMedicos/TempBaseCargaDatos.html")  # Redirige a la página de perfil después de guardar
+    else:
+        form = UserEditForm(instance=request.user)
+    
+    return render(request, 'users/editar_usuario.html', {'form': form})
+                
+                      
+                      
+        
+            
+    

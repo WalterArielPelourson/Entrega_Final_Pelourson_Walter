@@ -38,6 +38,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url "consultar_turnos" %}">Consulta Turnos</a></li>
                         {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="btn btn-danger text-white" href="{% url 'Logout' %}">Cerrar Sesión</a></li>
+                        <li class="nav-item"><a class="btn btn-danger text-white" href="{% url 'EditarPerfil' %}">Editar Usuario</a></li>
                         {% else %}
                         <li class="nav-item"><a class="btn btn-primary text-white" href="{% url 'Login' %}">Iniciar Sesión</a></li>
                         <li class="nav-item"><a class="btn btn-success text-white" href="{% url 'Register' %}">Registrate</a></li>
