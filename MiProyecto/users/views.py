@@ -4,9 +4,9 @@ from django.contrib.auth import login, authenticate
 from users.forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserEditForm
-
-
-
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 #Logueo
@@ -33,7 +33,7 @@ def login_request(request):
     return render(request, "users/login.html", {"form": form, "msg_login": msg_login})    
 
 
- #registro 
+#registro 
 def register (request):
     
     msg_register = ""
@@ -50,12 +50,7 @@ def register (request):
     return render(request, "users/registro.html", {"form": form, "msg_register": msg_register})        
 
 
-      
-       
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-
-
+#Editar Usuario
 @login_required
 def editar_perfil(request):
     if request.method == 'POST':
@@ -68,6 +63,16 @@ def editar_perfil(request):
     
     return render(request, 'users/editar_usuario.html', {'form': form})
                 
+                
+#Cambiar Clave
+class CambiarPassView (LoginRequiredMixin, PasswordChangeView):
+    template_name = "users/cambiar_clave.html"
+    success_url = reverse_lazy("EditarPerfil")
+                    
+                
+                
+                
+
                       
                       
         
