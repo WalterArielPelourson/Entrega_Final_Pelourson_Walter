@@ -7,6 +7,9 @@ from .forms import UserEditForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from .forms import UserEditForm
+from .models import Avatar
+from django.contrib import messages
 
 
 #Logueo
@@ -38,30 +41,55 @@ def register (request):
     
     msg_register = ""
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = UserRegisterForm(request.POST, request.FILES)
         
         if form. is_valid():
-           form.save()
+           #form.save()
+           user = form.save() 
+           avatar = Avatar(user=user)
+           if form.cleaned_data.get('imagen'):
+               avatar.imagen = form.cleaned_data.get('imagen')
+           avatar.save() 
+           messages.success(request, f'Tu cuenta ha sido creada. ¡Ahora puedes iniciar sesión!')  
+           
            return render(request, "MiAppMedicos/TempBaseCargaDatos.html")
         
-        msg_register = "Error en datos ingresados"
-        
-    form = UserRegisterForm()
+       # msg_register = "Error en datos ingresados"
+    else:   
+        form = UserRegisterForm()
     return render(request, "users/registro.html", {"form": form, "msg_register": msg_register})        
 
 
 #Editar Usuario
 @login_required
 def editar_perfil(request):
+    
+    usuario = request.user
+    try:
+        avatar = usuario.avatar
+       
+    except Avatar.DoesNotExist:
+        avatar=None
+
+    
     if request.method == 'POST':
-        form = UserEditForm(request.POST, instance=request.user)
+        
+        form = UserEditForm(request.POST, request.FILES, instance=request.user)
+        
         if form.is_valid():
             form.save()
+            if avatar:
+                avatar.imagen = form.cleaned_data.get('imagen')
+                avatar.save()
+                
+            else:
+                Avatar.objects.create(user=usuario, imagen=form.cleaned_data.get('imagen'))
             return render(request, "MiAppMedicos/TempBaseCargaDatos.html")  # Redirige a la página de perfil después de guardar
     else:
-        form = UserEditForm(instance=request.user)
+        form = UserEditForm(instance=usuario)
+       # form = UserEditForm(initial={'imagen': usuario.avatar.imagen}, instance=request.user)
     
-    return render(request, 'users/editar_usuario.html', {'form': form})
+    return render(request, 'users/editar_usuario.html', {'form': form, 'usuario': usuario})
                 
                 
 #Cambiar Clave

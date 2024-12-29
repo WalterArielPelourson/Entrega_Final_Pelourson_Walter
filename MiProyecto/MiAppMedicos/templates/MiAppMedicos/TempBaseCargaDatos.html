@@ -30,14 +30,24 @@
                         <!--<li class="nav-item"><a class="nav-link" href="#about">Reseña</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Medicos</a></li>-->
                         {% if request.user.is_superuser %}
-                        <li class="nav-item"><a class="nav-link" href="{% url "AltaMed" %}">Alta Medicos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url "EditaBorra" %}">Edita o Borra Medicos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url "AltaPac" %}">Alta Pacientes</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url "AltaMed" %}">Alta Medicos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url "EditaBorra" %}">Edita o Borra Medicos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url "AltaPac" %}">Alta Pacientes</a></li>
                         {% endif %}
-                        <li class="nav-item"><a class="nav-link" href="{% url "cargar_turno" %}">Alta Turnos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url "consultar_turnos" %}">Consulta Turnos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url "cargar_turno" %}">Alta Turnos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url "consultar_turnos" %}">Consulta Turnos</a></li>
                         {% if request.user.is_authenticated %}
-                        <img src="{{request.user.avatar.imagen.url}}" alt="" height ="40px">
+                            {% if request.user.avatar and request.user.avatar.imagen %}
+                                <img src="{{ request.user.avatar.imagen.url }}" alt="" height="40px">
+                            {% else %}
+                                <img src="/path/to/default/avatar.png" alt="Avatar" height="40px">
+                            {% endif %}
+                        
+                        
+                        
+                        
+                        
+                        
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

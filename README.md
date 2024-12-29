@@ -35,9 +35,9 @@ visión de expandirse en el futuro.
 * SQLite
 * Admin
   Django (Solo para correccion de Proyecto)
-  * SuperUser: Usuario: Test  / Clave:123
+  * SuperUser: Usuario: Test  / Clave:Wap1234
   * Usuario
-    con acceso restrigido: Usuario: Walter / Clave: Ariel123456$
+    con acceso restrigido: Usuario: stf / Clave: Stf123456
 
 **Instalación**
 
