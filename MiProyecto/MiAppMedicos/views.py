@@ -16,6 +16,7 @@ from .forms import ConsultaForm
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from .models import MedicoModels
  
 def portada (request):
      return render(request, 'MiAppMedicos/medicos.html')
@@ -25,9 +26,11 @@ def AltaMedico (request):
      return render(request, 'MiAppMedicos/altamedico.html')     
  
 def Secundario (request):
-     return render(request, 'MiAppMedicos/TempBaseCargaDatos.html')     
+     return render(request, 'MiAppMedicos/TempBaseCargaDatos.html') 
+   
   
- 
+def AcercadeMi (request):
+     return render(request, 'MiAppMedicos/AcercadeMi.html')  
  
  
  
@@ -87,8 +90,8 @@ def consultar_turnos(request):
         form1 = ConsultaForm(request.POST)
         if form1.is_valid():
             informacion = form1.cleaned_data
-           
-            turnos = Turno.objects.filter(fecha__icontains=informacion ["fecha"])
+            medico_id = informacion.get("medico_id")
+            turnos = Turno.objects.filter(fecha__icontains=informacion ["fecha"], medico_id=medico_id).order_by('medico', 'hora')
             
             return render(request,"MiAppMedicos/resultado_consultar.html", {"turnos": turnos})
     else:
@@ -143,3 +146,8 @@ def editamedico(request, MedicoModels_id):
         } 
     )
     return render(request, "MiAppMedicos/edita_medico.html", {"form": formulario})
+
+
+
+  
+  

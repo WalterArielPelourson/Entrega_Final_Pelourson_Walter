@@ -1,5 +1,6 @@
 from django import forms
 from .models import Turno
+from .models import MedicoModels
 
 class MedicoForm(forms.Form):
     nombre = forms.CharField(max_length=20)
@@ -25,3 +26,4 @@ class TurnoForm(forms.ModelForm):
 #Consulta Turnos
 class ConsultaForm(forms.Form):
     fecha = forms.DateField()
+    medico_id = forms.ModelChoiceField(queryset=MedicoModels.objects.all(), required=False, label="Médico")

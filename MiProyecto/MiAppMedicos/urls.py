@@ -19,13 +19,19 @@ from django.urls import path
 from MiAppMedicos import views
 from .views import medico_view
 
+
+
 urlpatterns = [  
     path('', views.portada, name="Portada"),
     path('BMVBCMedicos/', views.MedicoModelsListView.as_view(), name = "EditaBorra"),
     path('Editar/<int:MedicoModels_id>/', views.editamedico, name = "EditaMedico"),
     path('Borrar/<int:MedicoModels_id>/', views.borramedico, name = "BorraMedico"),
     path('Secundario/', views.Secundario, name ="Secundario"),
+    path('AcercadeMi/', views.AcercadeMi, name ="AcercadeMi"),
+    
 ]
+
+
 
 formaltamedico_html = [
     path('alta-medico/', views.AltaMedico, name="AltasMedicos")

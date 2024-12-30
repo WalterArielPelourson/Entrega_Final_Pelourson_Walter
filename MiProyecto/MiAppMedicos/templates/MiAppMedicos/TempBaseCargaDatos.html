@@ -35,7 +35,8 @@
                             <li class="nav-item"><a class="nav-link" href="{% url "AltaPac" %}">Alta Pacientes</a></li>
                         {% endif %}
                             <li class="nav-item"><a class="nav-link" href="{% url "cargar_turno" %}">Alta Turnos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url "consultar_turnos" %}">Consulta Turnos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url "consultar_turnos" %}">Consulta Turnos por Fecha</a></li>
+                           
                         {% if request.user.is_authenticated %}
                             {% if request.user.avatar and request.user.avatar.imagen %}
                                 <img src="{{ request.user.avatar.imagen.url }}" alt="" height="40px">

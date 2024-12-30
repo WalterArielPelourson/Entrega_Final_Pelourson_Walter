@@ -2,15 +2,26 @@
 
 {% load static %}
 
-{% block title %} Formulario para consultar turnos {% endblock title %}
+{% block title %} Formulario para consultar turnos por fecha {% endblock title %}
 
 {% block main %}
        
-    <h2>Turnos de consultados</h2>
+    <!--<h2>Turnos de consultados</h2>-->
 <ul>
+    <h1>Consulta de Turnos del Médico</h1>
     {% for turno in turnos %}
-        <li>MEDICO:{{ turno.medico }} - PACIENTE: {{ turno.paciente }} - EL DIA: {{ turno.fecha }} A LAS: {{ turno.hora }} HS</li>
+        <h2> <li>MEDICO:{{ turno.medico.nombre }}, {{ turno.medico.apellido }}</li></h2> 
+    
+       
+        <h3>Turnos Otorgados a:</h3>
+    
+    
+        <li>PACIENTE: {{ turno.paciente.nombre }}, {{ turno.paciente.apellido}},  ObraSocial: {{ turno.paciente.obrasocial}},  Edad: {{ turno.paciente.edad}}</li>
+       
+        <li> EL DIA: {{ turno.fecha }} A LAS: {{ turno.hora }} HS</li>
+        <br>
     {% endfor %}
 </ul>
+
 
 {% endblock main %}
