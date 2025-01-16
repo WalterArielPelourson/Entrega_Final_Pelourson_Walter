@@ -6,19 +6,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Gestor de Turnos</title>
+        <title>Gestor de Disme </title>
+
+        <style> body { 
+            background-image: url("D:\Documents\Desktop\ProyectoDisme\Entrega_Final_Pelourson_Walter\MiProyecto\MiAppMedicos\static\MiAppMedicos\assets\img\bg-masthead.jpg"); 
+            background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */ 
+            background-repeat: no-repeat; /* Evita que la imagen se repita */ 
+            background-attachment: fixed; /* Fija la imagen en su posición */ 
+            } 
+        </style>
+
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+       <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <!--<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
         <!-- SimpleLightbox plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'MiAppMedicos/css/styles.css' %}" rel="stylesheet" />
     </head>
+    
+    
+    
+    
+    
+    
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-10" id="mainNav">
@@ -33,8 +48,8 @@
                             <li class="nav-item"><a class="nav-link" href="{% url "AltaMed" %}">Alta Medicos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url "EditaBorra" %}">Edita o Borra Medicos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url "AltaPac" %}">Alta Pacientes</a></li>
-                        {% endif %}
                             <li class="nav-item"><a class="nav-link" href="{% url "cargar_turno" %}">Alta Turnos</a></li>
+                            {% endif %}
                             <li class="nav-item"><a class="nav-link" href="{% url "consultar_turnos" %}">Consulta Turnos por Fecha</a></li>
                            
                         {% if request.user.is_authenticated %}
@@ -74,15 +89,18 @@
         <header class="masthead">
             <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-2 gx-lg-3 h-75 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">Instituto "Vida y Salud" te permite gestionar tus turnos medicos</h1> <hr class="divider" />
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">"En nuestro consultorio, la salud y el bienestar de nuestros pacientes son nuestra prioridad. Con un equipo de profesionales dedicados y tecnología de punta, garantizamos una atención médica de calidad en un ambiente cálido y acogedor. ¡Reserva tu turno hoy y experimenta la diferencia!"</p>
-   
-
-
-                    </div>
+                    {% if request.user.is_authenticated %}
+                        <div class="col-lg-8 align-self-end">
+                            <h1 class="text-white font-weight-bold">Rizobacter plataforma de control de Disme</h1> <hr class="divider" />
+                        </div>
+                    {% else %}
+                        <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold">Rizobacter plataforma de control de Disme</h1> <hr class="divider" />
+                        </div>
+                        <div class="col-lg-8 align-self-baseline justify-content-center text-center">
+                            <p class="text-white-75 mb-5 ">"Para acceder al sistema, por favor regístrate utilizando tu correo electrónico corporativo o si ya te registraste inicia sesión con tus credenciales."</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </header>

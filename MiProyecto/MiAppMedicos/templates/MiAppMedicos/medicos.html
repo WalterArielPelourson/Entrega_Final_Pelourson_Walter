@@ -6,7 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Gestor de Turnos</title>
+       
+        <title>Gestor de Disme</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap Icons-->
@@ -18,6 +19,32 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'MiAppMedicos/css/styles.css' %}" rel="stylesheet" />
+
+       
+        <!-- Navigation--> 
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-3" id="mainNav"> 
+            <div class="container px-4 px-lg-5"> 
+                <a class="navbar-brand" href="#page-top">Pagina Principal</a> 
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> 
+                <div class="collapse navbar-collapse" id="navbarResponsive"> 
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0"> 
+                        <!--<li class="nav-item"><a class="nav-link" href="{% url "AcercadeMi" %}">Acerca de Mi</a></li>!--> 
+                        <li class="nav-item"><a class="nav-link" href="#about">Reseña</a></li> 
+                        <!--<li class="nav-item"><a class="nav-link" href="#services">Medicos</a></li>!--> 
+                        <li class="nav-item"><a class="nav-link" href="{% url "Secundario" %}">Ir al Gestor de Disme</a></li> 
+                        <!--<li class="nav-item"><a class="nav-link" href="{% url "AltaMed" %}">Alta Medicos</a>
+                        </li> <li class="nav-item"><a class="nav-link" href="{% url "AltaPac" %}">Alta Pacientes</a>
+                        </li> <li class="nav-item"><a class="nav-link" href="{% url "cargar_turno" %}">Alta Turnos</a>
+                        </li> <li class="nav-item"><a class="nav-link" href="{% url "consultar_turnos" %}">Consulta Turnos</a></li>--> 
+                    </ul> 
+                </div> 
+            </div> 
+        </nav> 
+        <div class="content"> Rizobacter 
+
+        </div> 
+    </body> 
+        
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -27,10 +54,10 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="{% url "AcercadeMi" %}">Acerca de Mi</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">Reseña</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">Medicos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url "Secundario" %}">Ir al Gestor de Turnos</a></li>
+                        <!--<li class="nav-item"><a class="nav-link" href="{% url "AcercadeMi" %}">Acerca de Mi</a></li>!-->
+                        <!--<li class="nav-item"><a class="nav-link" href="#about">Reseña</a></li>!-->
+                        <!--<li class="nav-item"><a class="nav-link" href="#services">Medicos</a></li>!-->
+                        <li class="nav-item"><a class="nav-link" href="{% url "Secundario" %}">Ir al Gestor de Disme</a></li>
                         <!--<li class="nav-item"><a class="nav-link" href="{% url "AltaMed" %}">Alta Medicos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url "AltaPac" %}">Alta Pacientes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url "cargar_turno" %}">Alta Turnos</a></li>
@@ -42,21 +69,29 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center ">
                     <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">Instituto "Vida y Salud" te permite gestionar tus turnos medicos</h1> <hr class="divider" />
+                        <h1 class="text-white font-weight-bold text-center">Rizobacter plataforma de control de Disme</h1> <hr class="divider" />
+                       
                     </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">"En nuestro consultorio, la salud y el bienestar de nuestros pacientes son nuestra prioridad. Con un equipo de profesionales dedicados y tecnología de punta, garantizamos una atención médica de calidad en un ambiente cálido y acogedor. ¡Reserva tu turno hoy y experimenta la diferencia!"</p>
+                    <div class="text-white col-lg-8 align-self-baseline">
+                            <body>  
+                                <p>En los procesos de producción, la precisión y la calidad son factores críticos para el éxito. Los Dispositivos de Medición y Ensayo (DISME) juegan un papel fundamental en garantizar que los productos cumplan con los estándares de calidad y especificaciones técnicas requeridas.</p> 
+                                <p>La implementación de controles rigurosos de DISME permite:</p> 
+                                <ul> <li><strong>Precisión en la Medición:</strong><br> &nbsp;&nbsp; Asegurar que todas las mediciones sean exactas y consistentes, reduciendo el margen de error.</li> 
+                                     <li><strong>Calidad del Producto:</strong><br> &nbsp;&nbsp;Verificar que los productos finales cumplan con los estándares de calidad establecidos, evitando &nbsp;&nbsp;defectos y retrabajos.</li> 
+                                     <li><strong>Optimización de Procesos:</strong><br> &nbsp;&nbsp;Identificar y corregir desviaciones en el proceso de producción de manera oportuna, mejorando &nbsp;&nbsp;la eficiencia y reduciendo costos.</li> 
+                                     <li><strong>Conformidad Normativa:</strong><br> &nbsp;&nbsp;Cumplir con las normativas y regulaciones industriales, asegurando que los productos sean &nbsp;&nbsp;seguros y aptos para su uso.</li> 
+                                </ul> <p>En resumen, los controles de DISME son esenciales para mantener la integridad del proceso de producción, garantizar la satisfacción del cliente y mantener la competitividad en el mercado.</p> 
+                            </body></p>
    
-
 
                     </div>
                 </div>
             </div>
         </header>
         <!-- Reseña-->
-        <section class="page-section bg-primary" id="about">
+        <!--<section class="page-section bg-primary" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-6 text-center">
@@ -80,7 +115,7 @@
             </div>
         </section>
         <!-- Medicos-->
-        <section class="page-section" id="services">
+        <!--<section class="page-section" id="services">
             <div class="container px-4 px-lg-5">
                 <h2 class="text-center mt-0">Nuestro equipo medico</h2>
                 <hr class="divider" />
